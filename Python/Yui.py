@@ -6,14 +6,14 @@ import discord
 from discord.ext import commands
 import json
 
-abs_file_path = os.path.dirname(__file__)+"\\..\\..\\"
+abs_file_path = os.path.abspath(os.path.dirname(__file__))
 
 bot = commands.Bot(command_prefix="yui-")
 
-bot.con_dir = abs_file_path + "\\botconfig.json"
-bot.sao_dir = abs_file_path + "\\sao.json"
-bot.alo_dir = abs_file_path + "\\alo.json"
-bot.ggo_dir = abs_file_path + "\\ggo.json"
+bot.con_dir = abs_file_path + "../../botconfig.json"
+bot.sao_dir = abs_file_path + "../../sao.json"
+bot.alo_dir = abs_file_path + "../../alo.json"
+bot.ggo_dir = abs_file_path + "../../ggo.json"
 
 bot.config = json.load(open(bot.con_dir))
 
@@ -30,6 +30,7 @@ bot.remove_command("help")
 
 ignored_modules = []
 bot.loaded_extensions = []
+
 
 @bot.command()
 async def help(ctx):
