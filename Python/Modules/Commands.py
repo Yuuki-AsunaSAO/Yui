@@ -32,6 +32,7 @@ class Global:
                         "enemyDamage": 0
                     }
                     self.save_files()
+                    self.load_files()
 
     def in_sao():
         async def predicate(ctx):
