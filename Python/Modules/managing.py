@@ -1,6 +1,7 @@
 import discord
 import random
 import time
+import json
 from discord.ext import commands
 
 
@@ -17,11 +18,6 @@ class Managing:
         await ctx.send(embed=discord.Embed(title=death_msg, color=0xFF0000))
         if not death_msg == "I'm afraid I can't let you do that, Dave":
             await self.bot.close()
-
-    @commands.command(name='prefix', hidden=True)
-    async def changeprefix(self, ctx, nprefix):
-        self.bot.command_prefix = nprefix
-        await ctx.send(embed=discord.Embed(title=f"Prefix changed to {nprefix.lower()}", color=0x7289DA))
 
     # Hidden means it won't show up on the default help.
     @commands.command(name='load', hidden=True)
@@ -87,6 +83,11 @@ class Managing:
         for module in self.bot.loaded_extensions:
             description += "\n" + module
         await ctx.send(embed=discord.Embed(title="All modules", description=description, color=0x7289DA))
+
+    @commands.command(hidden=True)
+    @commands.is_owner()
+    async def reloadconfig(self, ctx):
+        self.bot.config = json.load(open("botconfig.json"))
 
 
 def setup(bot):
