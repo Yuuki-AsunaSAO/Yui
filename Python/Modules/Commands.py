@@ -14,7 +14,7 @@ class Global:
         # message.channel.parentID
         if not message.author.bot:
             if message.channel.category_id == 456391975630012428 or message.channel.id in self.bot.config["debugChannels"]:
-                if str(message.author.id) not in self.bot.sao.keys():
+                if message.author.id not in [int(k) for k in self.bot.sao.keys()]:
                     await message.channel.send("Hey! I created a profile for you! you didn't seem to have one!")
                     self.bot.sao[message.author.id] = {
                         "playerXp": 0,
