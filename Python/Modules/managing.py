@@ -87,7 +87,7 @@ class Managing:
     @commands.command(hidden=True)
     @commands.is_owner()
     async def reloadconfig(self, ctx):
-        self.bot.config = json.load(open("botconfig.json"))
+        self.bot.config = json.load(open(self.bot.con_dir))
 
 
 def setup(bot):

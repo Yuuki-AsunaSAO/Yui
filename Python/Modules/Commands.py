@@ -67,14 +67,14 @@ class Global:
         pass
 
     def load_files(self):
-        self.bot.sao = json.load(open("./sao.json", "r+"))
-        self.bot.alo = json.load(open("./alo.json", "r+"))
-        self.bot.ggo = json.load(open("./ggo.json", "r+"))
+        self.bot.sao = json.load(open(bot.sao_dir, "r+"))
+        self.bot.alo = json.load(open(bot.alo_dir, "r+"))
+        self.bot.ggo = json.load(open(bot.ggo_dir, "r+"))
 
     def save_files(self):
-        json.dump(self.bot.sao, open("sao.json", "w+"))
-        json.dump(self.bot.alo, open("alo.json", "w+"))
-        json.dump(self.bot.ggo, open("ggo.json", "w+"))
+        json.dump(self.bot.sao, open(self.bot.sao_dir "w+"))
+        json.dump(self.bot.alo, open(self.bot.alo_dir "w+"))
+        json.dump(self.bot.ggo, open(self.bot.ggo_dir "w+"))
 
 
 def setup(bot):
