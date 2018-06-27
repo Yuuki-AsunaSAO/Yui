@@ -21,14 +21,23 @@ bot.on('ready', async() => {
     setInterval(function(){
 		
         if (setBotActivity == undefined) {
+
             setBotActivity = "Developing! Yui-help";
+
         } else if (setBotActivity == "Developing! Yui-help") {
+
             setBotActivity = "I love mama!";
+
         } else if (setBotActivity == "I love mama!") {
+
             setBotActivity = "I love papa!";
+
         } else {
+
             setBotActivity = "Developing! Yui-help";
+
         }
+        
 		bot.user.setActivity(setBotActivity);
 		console.log("Set Activity to: "+ setBotActivity);
 
@@ -63,10 +72,11 @@ bot.on('message', (message) => {
         message.channel.send(helpEmbed);
 
         message.reply("Work In Progress! If you need any help with my commands, ask WannaBeGamerGirl directly please!");
+
+        return;
     }
     if (message.content.includes("hi") && message.content.includes("yui", "Yui")) {
-        // yui-help hi 
-		// triggers help command *and* hi?
+
         var answers = ["Hello!", "Hi there!", "Hey!", "Good day :D", "Greetings!"];
         var papaAnswers = ["Hello papa!", "Hi there papa!", "Hey papa!", "Good day papa!", "Greetings papa!"];
         var mamaAnswers = ["Hello mama!", "Hi there mama!", "Hey mama!", "Good day mama!", "Greetings mama!"];
@@ -75,20 +85,28 @@ bot.on('message', (message) => {
         var mamaIndex = Math.floor(Math.random() * mamaAnswers.length);
 
         if (message.author.id == "399494016539820032") {
+
             message.reply(papaAnswers[papaIndex]);
+
             return;
         }
 		else if (message.author.id == "365452203982323712") {
+
             message.reply(mamaAnswers[mamaIndex]);
+
             return
         }
 		else {
+
             message.reply(answers[answerIndex]);
+
             return;
         }
+        return;
     }
 
     if (command == "save" && message.member.hasPermission("ADMINISTRATOR") && message.content.startsWith(prefix)) {
+        
         fs.writeFile("./sao.json", JSON.stringify(sao), (err) => {
             if (err) console.log(err);            
         });
@@ -126,7 +144,9 @@ bot.on('message', (message) => {
 
             for (var g = botconfig.roadMap.length; g >= 0; g--) {
                 if (botconfig.roadMap[g] == featureToRemove) {
+
                     botconfig.roadMap.splice(g, 1);
+
                 }
             }
 
@@ -140,9 +160,14 @@ bot.on('message', (message) => {
             if (roadMap.length <= 0) return message.reply("There are currently no planned new features!");
 
             for (var c = 0; c < roadMap.length; c++) {
+
                 roadMapMessage += roadMap[c] + "\n"
+
             }
+
             message.reply(roadMapMessage);
+
+            return;
         }
     }
 
@@ -185,8 +210,11 @@ bot.on('message', (message) => {
                 enemyMaxHP: 0,
                 enemyDamage: 0,
             }
+
             fs.writeFile("./sao.json", JSON.stringify(sao), (err) => {
-                if (err) console.log(err);                
+
+                if (err) console.log(err);    
+
             });
         }
         
@@ -215,57 +243,56 @@ bot.on('message', (message) => {
                 sao[message.author.id].enemyMaxHP = boarGetHP;
 
                 return message.reply("You started a fight with a Boar level: " + sao[message.author.id].enemyLevel + ", to attack this creature again, simply use yui-fight untill it dies! Watch your health!");
+            
             } else {
+
                 return message.reply("ERROR! My cardinal system says you're already fighting this creature! Use yui-fight instead!");
+
             }
 
         } else {
 
             if (sao[message.author.id].enemyCurrent == "none") return message.reply("ERROR! My cardinal system says that you're not in combat!");
-            else {
 
-                var boarAttacks = ["Oh no! The boar changed his direction, and dodged your attack!", "Oh no!The boar stepped aside, and rushed towards you!", "Oh no! The boar used your movement against you!", "Oh no! You got tired, and the boar used this moment to attack!"];
-                var boarIndex = Math.floor(Math.random() * boarAttacks.length);
-                var calcPlayerDamage = Math.floor(Math.random() * getPlayerLevel + sao[message.author.id].playerDamage);
-                var chanceToHit = Math.floor(Math.random() * 100 +1);
+            
 
-                if (chanceToHit >= 40 && sao[message.author.id].enemyCurrent != "none") {
+            var boarAttacks = ["Oh no! The boar changed his direction, and dodged your attack!", "Oh no!The boar stepped aside, and rushed towards you!", "Oh no! The boar used your movement against you!", "Oh no! You got tired, and the boar used this moment to attack!"];
+            var boarIndex = Math.floor(Math.random() * boarAttacks.length);
+            var calcPlayerDamage = Math.floor(Math.random() * getPlayerLevel + sao[message.author.id].playerDamage);
+            var chanceToHit = Math.floor(Math.random() * 100 +1);
 
-                    message.reply("You attacked a boar! Dealing " + calcPlayerDamage + " Damage!");
-                    sao[message.author.id].enemyCurrentHP -= calcPlayerDamage;
+            if (chanceToHit >= 40 && sao[message.author.id].enemyCurrent != "none") {
 
-                    console.log("true");
+                message.reply("You attacked a boar! Dealing " + calcPlayerDamage + " Damage!");
+                sao[message.author.id].enemyCurrentHP -= calcPlayerDamage;
 
-                }
-                if (chanceToHit < 40 && sao[message.author.id].enemyCurrent != "none") {
+                console.log("true");
 
-                    var boarDamage = getDamage(5, 15);
+            }
+            if (chanceToHit < 40 && sao[message.author.id].enemyCurrent != "none") {
 
-                    message.reply(boarAttacks[boarIndex] + " Dealing " + boarDamage + " Damage!");
+                var boarDamage = getDamage(5, 15);
 
-                    sao[message.author.id].playerHealth -= boarDamage;
+                message.reply(boarAttacks[boarIndex] + " Dealing " + boarDamage + " Damage!");
 
-                    console.log("true");
+                sao[message.author.id].playerHealth -= boarDamage;
 
-                }
+                console.log("true");
 
-                if (sao[message.author.id].enemyCurrentHP <= 0 && sao[message.author.id].enemyCurrent != "none") {
+            }
 
-                    var randomBoarExp = Math.floor(Math.random()* 30 +1);
+            if (sao[message.author.id].enemyCurrentHP <= 0 && sao[message.author.id].enemyCurrent != "none") {
 
-                    enemyKilled(message.author.id);
-                    levelUp(sao[message.author.id].playerXp, message.author.id);
+                var randomBoarExp = Math.floor(Math.random()* 30 +1);
 
-                    return message.reply("You killed a boar! His level was: " + getLevel)
+                enemyKilled(message.author.id);
+                levelUp(sao[message.author.id].playerXp, message.author.id);
 
-                }
-                return;
+                return message.reply("You killed a boar! His level was: " + getLevel)
             }
             return;
         }
         return;
-
-
     }
 
 
@@ -302,8 +329,11 @@ bot.on('message', (message) => {
 });
 
 function getRandomColor() {
+    var letters = '0123456789ABCDEF';
     var color = '#';
-    color += Math.floor(Math.random() * 256**3).toString(16);
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
     return color;
 }
 
