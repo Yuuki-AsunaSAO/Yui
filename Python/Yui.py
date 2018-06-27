@@ -19,7 +19,7 @@ bot.config = json.load(open(bot.con_dir))
 
 
 async def cycle_status():
-    statuses = [f"Developing! Yui-help", "I love mama!", "I love papa!"]
+    statuses = ["Developing! Yui-help", "I love mama!", "I love papa!"]
     await bot.wait_until_ready()
     while not bot.is_closed():
         await bot.change_presence(activity=discord.Game(name=statuses[0]))

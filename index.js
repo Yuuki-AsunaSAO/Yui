@@ -118,7 +118,6 @@ bot.on('message', (message) => {
             if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply("ERROR! You are not an administrator!");
 
             botconfig.roadMap.push(featureToAdd);
-
             message.reply("Successfully added planned feature!")
 
         } else if (args[0] == "remove") {
@@ -126,13 +125,9 @@ bot.on('message', (message) => {
             var featureToRemove = args.join(" ").slice("7");
 
             for (var g = botconfig.roadMap.length; g >= 0; g--) {
-
                 if (botconfig.roadMap[g] == featureToRemove) {
-
                     botconfig.roadMap.splice(g, 1);
-
                 }
-
             }
 
             message.reply("Successfully removed planned feature!")
@@ -145,9 +140,7 @@ bot.on('message', (message) => {
             if (roadMap.length <= 0) return message.reply("There are currently no planned new features!");
 
             for (var c = 0; c < roadMap.length; c++) {
-
-                roadMapMessage += roadMap[c] + "\n";
-
+                roadMapMessage += roadMap[c] + "\n"
             }
             message.reply(roadMapMessage);
         }
@@ -193,9 +186,7 @@ bot.on('message', (message) => {
                 enemyDamage: 0,
             }
             fs.writeFile("./sao.json", JSON.stringify(sao), (err) => {
-
-                if (err) console.log(err);
-                
+                if (err) console.log(err);                
             });
         }
         
@@ -225,13 +216,13 @@ bot.on('message', (message) => {
 
                 return message.reply("You started a fight with a Boar level: " + sao[message.author.id].enemyLevel + ", to attack this creature again, simply use yui-fight untill it dies! Watch your health!");
             } else {
-
                 return message.reply("ERROR! My cardinal system says you're already fighting this creature! Use yui-fight instead!");
             }
+
         } else {
 
             if (sao[message.author.id].enemyCurrent == "none") return message.reply("ERROR! My cardinal system says that you're not in combat!");
-            if (sao[message.author.id].enemyCurrent != "none") {
+            else {
 
                 var boarAttacks = ["Oh no! The boar changed his direction, and dodged your attack!", "Oh no!The boar stepped aside, and rushed towards you!", "Oh no! The boar used your movement against you!", "Oh no! You got tired, and the boar used this moment to attack!"];
                 var boarIndex = Math.floor(Math.random() * boarAttacks.length);
@@ -239,8 +230,6 @@ bot.on('message', (message) => {
                 var chanceToHit = Math.floor(Math.random() * 100 +1);
 
                 if (chanceToHit >= 40 && sao[message.author.id].enemyCurrent != "none") {
-
-
 
                     message.reply("You attacked a boar! Dealing " + calcPlayerDamage + " Damage!");
                     sao[message.author.id].enemyCurrentHP -= calcPlayerDamage;
@@ -300,6 +289,8 @@ bot.on('message', (message) => {
     }
 }
 
+    //TODO
+
     // AFO section
 
     // GGO section
@@ -311,11 +302,8 @@ bot.on('message', (message) => {
 });
 
 function getRandomColor() {
-    var letters = '0123456789ABCDEF';
     var color = '#';
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
+    color += letters[Math.floor(Math.random() * 256**3).toString(16)];
     return color;
 }
 
