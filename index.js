@@ -19,33 +19,18 @@ bot.on('ready', async() => {
     console.log(`${bot.user.username} Login succesfull!`);
 
     setInterval(function(){
-
+		
         if (setBotActivity == undefined) {
-
             setBotActivity = "Developing! Yui-help";
-            bot.user.setActivity(setBotActivity);
-            console.log("Set Activity to: "+ setBotActivity);
-
         } else if (setBotActivity == "Developing! Yui-help") {
-
             setBotActivity = "I love mama!";
-            bot.user.setActivity(setBotActivity);
-            
-            console.log("Set Activity to: "+ setBotActivity);
-
         } else if (setBotActivity == "I love mama!") {
-
             setBotActivity = "I love papa!";
-            bot.user.setActivity(setBotActivity);
-            console.log("Set Activity to: "+ setBotActivity);
-
         } else {
-
             setBotActivity = "Developing! Yui-help";
-            bot.user.setActivity("Developing! Yui-help");
-            console.log("Set Activity to: "+ setBotActivity);
-
         }
+		bot.user.setActivity(setBotActivity);
+		console.log("Set Activity to: "+ setBotActivity);
 
     }, 60000)
 
@@ -78,11 +63,10 @@ bot.on('message', (message) => {
         message.channel.send(helpEmbed);
 
         message.reply("Work In Progress! If you need any help with my commands, ask WannaBeGamerGirl directly please!");
-
     }
-
     if (message.content.includes("hi") && message.content.includes("yui", "Yui")) {
-
+        // yui-help hi 
+		// triggers help command *and* hi?
         var answers = ["Hello!", "Hi there!", "Hey!", "Good day :D", "Greetings!"];
         var papaAnswers = ["Hello papa!", "Hi there papa!", "Hey papa!", "Good day papa!", "Greetings papa!"];
         var mamaAnswers = ["Hello mama!", "Hi there mama!", "Hey mama!", "Good day mama!", "Greetings mama!"];
@@ -91,48 +75,36 @@ bot.on('message', (message) => {
         var mamaIndex = Math.floor(Math.random() * mamaAnswers.length);
 
         if (message.author.id == "399494016539820032") {
-
             message.reply(papaAnswers[papaIndex]);
-            
             return;
         }
-
-        else if (message.author.id == "365452203982323712") {
-
+		else if (message.author.id == "365452203982323712") {
             message.reply(mamaAnswers[mamaIndex]);
-            
             return
-        } else {
-
+        }
+		else {
             message.reply(answers[answerIndex]);
-
             return;
         }
     }
 
     if (command == "save" && message.member.hasPermission("ADMINISTRATOR") && message.content.startsWith(prefix)) {
-
         fs.writeFile("./sao.json", JSON.stringify(sao), (err) => {
-
-            if (err) console.log(err);
-            
+            if (err) console.log(err);            
         });
+		
         fs.writeFile("./alo.json", JSON.stringify(alo), (err) => {
-    
-            if (err) console.log(err);
-            
+            if (err) console.log(err);         
         });
+		
         fs.writeFile("./ggo.json", JSON.stringify(ggo), (err) => {
-    
             if (err) console.log(err);
-            
         });
+		
         fs.writeFile("./botconfig.json", JSON.stringify(botconfig), (err) => {
-    
             if (err) console.log(err);
-            
         });
-        
+		
         return message.reply("Successfully saved file changes!");
 
     }
