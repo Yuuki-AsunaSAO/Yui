@@ -308,21 +308,18 @@ function getRandomColor() {
 }
 
 function getDamage(min, max) {
-
     var randomDamage = Math.floor(Math.random()* max + min);
 
     return randomDamage;
 }
 
 function levelUp(exp, id){
-
-    let levelExp = (sao[id].level^1.5) * 150;  
-
+    let levelExp = (sao[id].level^1.5) * 150;
     if (exp >= levelExp) {
 
         sao[id].playerLevel += 1;
-
         message.channel.send("Wow! You levelled up! Your new level is: " + sao[message.author.id].playerLevel);
+
         return;
     }
     return;
@@ -334,7 +331,6 @@ function enemyKilled(id){
     sao[id].enemyMaxHP = 0;
     sao[id].enemyDamage = 0;
 
-
     sao[id].playerKills += 1;
 
     return;
@@ -344,25 +340,21 @@ var timesSaved = 0
 setInterval(function(){
 
     fs.writeFile("./sao.json", JSON.stringify(sao), (err) => {
-
-        if (err) console.log(err);
-        
+        if (err) console.log(err);        
     });
+
     fs.writeFile("./alo.json", JSON.stringify(alo), (err) => {
-
         if (err) console.log(err);
-        
     });
+
     fs.writeFile("./ggo.json", JSON.stringify(ggo), (err) => {
+        if (err) console.log(err);
+    });
 
-        if (err) console.log(err);
-        
-    });
     fs.writeFile("./botconfig.json", JSON.stringify(botconfig), (err) => {
-    
         if (err) console.log(err);
-        
     });
+    
     timesSaved++
     console.log("Saved any file changes to Saved: " + timesSaved + " times!");
     
