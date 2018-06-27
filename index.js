@@ -303,7 +303,7 @@ bot.on('message', (message) => {
 
 function getRandomColor() {
     var color = '#';
-    color += letters[Math.floor(Math.random() * 256**3).toString(16)];
+    color += Math.floor(Math.random() * 256**3).toString(16);
     return color;
 }
 
