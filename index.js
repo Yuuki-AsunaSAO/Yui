@@ -62,32 +62,30 @@ bot.on('message', (message) => {
     }
     if (message.content.includes("hi") && message.content.includes("yui", "Yui")) {
 
-        var answers = ["Hello!", "Hi there!", "Hey!", "Good day :D", "Greetings!"];
-        var papaAnswers = ["Hello papa!", "Hi there papa!", "Hey papa!", "Good day papa!", "Greetings papa!"];
-        var mamaAnswers = ["Hello mama!", "Hi there mama!", "Hey mama!", "Good day mama!", "Greetings mama!"];
-        var answerIndex = Math.floor(Math.random() * answers.length);
-        var papaIndex = Math.floor(Math.random() * papaAnswers.length);
-        var mamaIndex = Math.floor(Math.random() * mamaAnswers.length);
+        let generic = ["Hello!", "Hi there!", "Hey!", "Good day :D", "Greetings!"];
+        let papa = ["Hello papa!", "Hi there papa!", "Hey papa!", "Good day papa!", "Greetings papa!"];
+        let mama = ["Hello mama!", "Hi there mama!", "Hey mama!", "Good day mama!", "Greetings mama!"];
 
-        if (message.author.id == "399494016539820032") {
+        let answer = ""
 
-            message.reply(papaAnswers[papaIndex]);
+        if (msg.author.id == "399494016539820032") {
 
-            return;
+            answer = papa[Math.floor(Math.random()*papa.length)]
+
         }
-		else if (message.author.id == "365452203982323712") {
+        else if (msg.author.id == "365452203982323712") {
 
-            message.reply(mamaAnswers[mamaIndex]);
+            answer = mama[Math.floor(Math.random()*mama.length)]
 
-            return
         }
-		else {
+        else {
 
-            message.reply(answers[answerIndex]);
+            answer = generic[Math.floor(Math.random()*generic.length)]
 
-            return;
         }
-        return;
+
+        return msg.reply(answer)
+
     }
 
     if (command == "save" && message.member.hasPermission("ADMINISTRATOR") && message.content.startsWith(prefix)) {
