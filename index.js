@@ -13,33 +13,18 @@ const commandList = ["help", "fight", "hi", "check", "roadmap"];
 
 bot.on('ready', async() => {
 
-    var setBotActivity;
+    console.log(`Login as ${bot.user.username} succesfull!`);
 
-    bot.user.setActivity(setBotActivity);
-    console.log(`${bot.user.username} Login succesfull!`);
+    let statuses = ["Developing! Yui-help", "I love mama!", "I love papa!"]
+    bot.user.setActivity(statuses[0]);
 
-    setInterval(function(){
-		
-        if (setBotActivity == undefined) {
+    setInterval(() =>{
 
-            setBotActivity = "Developing! Yui-help";
+        statuses = statuses.slice(1).concat([statuses[0]])
 
-        } else if (setBotActivity == "Developing! Yui-help") {
+        bot.user.setActivity(statuses[0]);
+        console.log("Set Activity to: "+ statuses[0]);
 
-            setBotActivity = "I love mama!";
-
-        } else if (setBotActivity == "I love mama!") {
-
-            setBotActivity = "I love papa!";
-
-        } else {
-
-            setBotActivity = "Developing! Yui-help";
-
-        }
-        
-		bot.user.setActivity(setBotActivity);
-		console.log("Set Activity to: "+ setBotActivity);
 
     }, 60000)
 
