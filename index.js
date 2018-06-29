@@ -30,7 +30,7 @@ bot.on('ready', async() => {
 
 });
 
-bot.on('message', (message) => {
+bot.on('message', message => {
     
     const prefix = botconfig.prefix;
     const getChannel = message.content;
@@ -126,6 +126,7 @@ bot.on('message', (message) => {
             var featureToRemove = args.join(" ").slice("7");
 
             for (var g = botconfig.roadMap.length; g >= 0; g--) {
+
                 if (botconfig.roadMap[g] == featureToRemove) {
 
                     botconfig.roadMap.splice(g, 1);
@@ -177,7 +178,7 @@ bot.on('message', (message) => {
             if (message.author.bot) return;
 
             message.reply("Hey! I created a profile for you! you didn't seem to have one!");
-    
+
             sao[message.author.id] = {
                 playerXp: 0,
                 playerLevel: 1,
@@ -200,7 +201,7 @@ bot.on('message', (message) => {
 
             });
         }
-        
+
 
     if (command == "fight" && message.content.startsWith(prefix)) {
 
