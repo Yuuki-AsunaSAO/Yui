@@ -1,10 +1,13 @@
 {
 	"sao":{
 		"boar":{
+			"attacks":["Oh no! The boar changed his direction, and dodged your attack!", "Oh no! The boar stepped aside, and rushed towards you!", "Oh no! The boar used your movement against you!", "Oh no! You got tired, and the boar used this moment to attack!"],
 			"levels":[1,12],
 			"spawns":[456433914999996437],
-			"baseHP":50,
-			"HPperlevel":2.5
+			"baseHp":50,
+			"hpMod":2.5,
+			"damageMod":0.1,
+
 		}
 	},
 	"alo":{
