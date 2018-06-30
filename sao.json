@@ -8,6 +8,11 @@
     "playerInventory": [],
     "playerTotalXp": 0,
     "playerKills": 0,
-    "playerDamage": 10
+    "playerDamage": 10,
+    "enemyType": null,
+    "enemyHP": null,
+    "enemyMaxHP": null,
+    "enemyDamage": null,
+    "enemyLevel": null
   }
 }

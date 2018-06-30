@@ -67,11 +67,11 @@ bot.on("message", async(message) =>{
                 playerTotalXp:   0,
                 playerKills:     0,
                 playerDamage:    10,
-                enemyType:       undefined,
-                enemyHP:         undefined,
-                enemyMaxHP:      undefined,
-                enemyDamage:     undefined,
-                enemyLevel:      undefined
+                enemyType:       null,
+                enemyHP:         null,
+                enemyMaxHP:      null,
+                enemyDamage:     null,
+                enemyLevel:      null
             }
 
             fs.writeFile("./sao.json", JSON.stringify(sao, null, 2), err => {
