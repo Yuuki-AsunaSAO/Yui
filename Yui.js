@@ -1,5 +1,6 @@
 const { CommandoClient } = require('discord.js-commando');
 const path = require('path');
+const fs = require('fs');
 
 const bot = new CommandoClient({
     commandPrefix: "!",
@@ -49,30 +50,31 @@ bot.on('ready', async() => {
 
 });
 
-bot.on("message", message =>{
-    if (message.channel.parentID == 456391975630012428 || message.channel.id == bco.debugChannel) {
+bot.on("message", async(message) =>{
+    if (message.channel.parentID == 456391975630012428 || message.channel.id == bco.debugChannel || !message.guild) {
 
         if (!sao[message.author.id] && !message.author.bot){
 
             message.reply("Hey! I created a profile for you! you didn't seem to have one!");
 
             sao[message.author.id] = {
-                playerXp: 0,
-                playerLevel: 1,
-                playerHealth: 100,
-                PlayerMaxHealth: 100,
-                playerCor: 150,
+                playerXp:        0,
+                playerLevel:     1,
+                playerHP:        100,
+                PlayerMaxHP:     100,
+                playerCor:       150,
                 playerInventory: [],
-                playerTotalXp: 0,
-                playerKills: 0,
-                playerDamage: 10,
-                enemyCurrent: "none",
-                enemyCurrentHP: 0,
-                enemyMaxHP: 0,
-                enemyDamage: 0,
+                playerTotalXp:   0,
+                playerKills:     0,
+                playerDamage:    10,
+                enemyType:       undefined,
+                enemyHP:         undefined,
+                enemyMaxHP:      undefined,
+                enemyDamage:     undefined,
+                enemyLevel:      undefined
             }
 
-            fs.writeFile("./sao.json", JSON.stringify(sao), err => {
+            fs.writeFile("./sao.json", JSON.stringify(sao, null, 2), err => {
 
                 if (err) console.log(err);    
 
@@ -82,7 +84,7 @@ bot.on("message", message =>{
 })
 
 bot.getRandomColor = () => {
-    return "#" + Math.floor(Math.random()* (256 ** 3)).toString(16)
+    return "#" + Math.floor(Math.random() * (256 ** 3)).toString(16)
 }
 
 bot.login("NDI4MTI3ODY4ODcwOTgzNjgw.DhUtVg.qyBWkM5UkR5UV9peQxcMqEhadSY");
