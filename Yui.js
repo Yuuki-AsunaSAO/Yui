@@ -30,7 +30,7 @@ bot.registry
 	.registerDefaultCommands()
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
-bot.on('ready', async( ) => {
+bot.on('ready', async () => {
 
 	console.log(`Login as ${bot.user.username} succesfull!`);
 
@@ -43,11 +43,11 @@ bot.on('ready', async( ) => {
 
 		bot.user.setActivity(statuses[0]);
 
-	}, 60000)
+	}, 60000);
 
 });
 
-bot.on('message', async(message) =>{
+bot.on('message', async (message) =>{
 	if (message.channel.id == 408292100275306496) {
 		if (message.content == bco['counting'] + 1) {
 
@@ -55,7 +55,7 @@ bot.on('message', async(message) =>{
 
 			fs.writeFile('./bco.json', JSON.stringify(bco, null, 2), (err) => {
 				if (err) console.log(err);
-			})
+			});
 
 		}
 		else{
@@ -84,20 +84,20 @@ bot.on('message', async(message) =>{
 				enemyHP:         null,
 				enemyMaxHP:      null,
 				enemyDamage:     null,
-				enemyLevel:      null
-			}
+				enemyLevel:      null,
+			};
 
 			fs.writeFile('./sao.json', JSON.stringify(sao, null, 4), err => {
 
-				if (err) console.log(err);  
+				if (err) console.log(err);
 
 			});
 		}
 	}
-})
+});
 
 bot.getRandomColor = () => {
-	return '#' + Math.floor(Math.random() * (256 ** 3)).toString(16)
-}
+	return '#' + Math.floor(Math.random() * (256 ** 3)).toString(16);
+};
 
 bot.login('NDI4MTI3ODY4ODcwOTgzNjgw.DhUtVg.qyBWkM5UkR5UV9peQxcMqEhadSY');
