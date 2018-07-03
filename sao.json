@@ -1,18 +1,18 @@
 {
-  "270622806520102913": {
-    "playerXp": 0,
-    "playerLevel": 1,
-    "playerHP": 100,
-    "PlayerMaxHP": 100,
-    "playerCor": 150,
-    "playerInventory": [],
-    "playerTotalXp": 0,
-    "playerKills": 0,
-    "playerDamage": 10,
-    "enemyType": null,
-    "enemyHP": null,
-    "enemyMaxHP": null,
-    "enemyDamage": null,
-    "enemyLevel": null
-  }
+    "270622806520102913": {
+        "playerXp": 0,
+        "playerLevel": 1,
+        "playerHP": 100,
+        "PlayerMaxHP": 100,
+        "playerCor": 150,
+        "playerInventory": [],
+        "playerTotalXp": 0,
+        "playerKills": 0,
+        "playerDamage": 10,
+        "enemyType": null,
+        "enemyHP": null,
+        "enemyMaxHP": null,
+        "enemyDamage": null,
+        "enemyLevel": null
+    }
 }
