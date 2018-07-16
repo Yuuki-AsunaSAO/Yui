@@ -2,3 +2,4 @@ package.json
 package-lock.json
 *.pyc
 bco.json
+*.json
