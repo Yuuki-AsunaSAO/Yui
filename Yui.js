@@ -94,10 +94,17 @@ bot.on('message', async (message) =>{
 			});
 		}
 	}
+	else if (message.channel.parentID == 456391975630012428 || message.channel.id == bco.debugChannel || !message.guild) {
+
+	}
+	else if (message.channel.parentID == 456391975630012428 || message.channel.id == bco.debugChannel || !message.guild) {
+
+	}
 });
 
 bot.getRandomColor = () => {
 	return '#' + Math.floor(Math.random() * (256 ** 3)).toString(16);
 };
 
+// bot.login(bco.token)
 bot.login('NDI4MTI3ODY4ODcwOTgzNjgw.DhUtVg.qyBWkM5UkR5UV9peQxcMqEhadSY');
