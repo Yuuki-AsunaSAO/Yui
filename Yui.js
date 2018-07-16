@@ -64,7 +64,7 @@ bot.on('message', async (message) =>{
 		}
 
 	}
-	else if (message.channel.parentID == 456391975630012428 || message.channel.id == bco.debugChannel || !message.guild) {
+	else if (message.channel.parentID == 456391975630012428 || bco.debugChannels.indexOf(message.channel.id) + 1 || !message.guild) {
 
 		if (!sao[message.author.id] && !message.author.bot) {
 
@@ -94,11 +94,11 @@ bot.on('message', async (message) =>{
 			});
 		}
 	}
-	else if (message.channel.parentID == 456391975630012428 || message.channel.id == bco.debugChannel || !message.guild) {
-
+	else if (message.channel.parentID == 456391975630012428 || bco.debugChannels.indexOf(message.channel.id) + 1 || !message.guild) {
+		// TODO
 	}
-	else if (message.channel.parentID == 456391975630012428 || message.channel.id == bco.debugChannel || !message.guild) {
-
+	else if (message.channel.parentID == 456391975630012428 || bco.debugChannels.indexOf(message.channel.id) + 1 || !message.guild) {
+		// TODO
 	}
 });
 
