@@ -13,6 +13,7 @@ module.exports = class ReplyCommand extends Command {
 	}
 
 	run(msg) {
+		msg.reply(':sob:')
 		return this.client.destroy();
 	}
 };
